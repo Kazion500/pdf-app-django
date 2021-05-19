@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entity Report</title>
+    <style>
+      .center {
+        text-align: center;
+      }
+      .table {
+        width: 100%;
+        background: #eee;
+        padding: 5px;
+      }
+
+      .table td{
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="center">
+      <img style="width: 100px;" src="https://www.gravatar.com/avatar/54fbda6d8055af80716614e9b1e65445?s=328&d=identicon&r=PG&f=1">
+      <h1>{{ comp_info.company_name }}</h1>
+      <p>{{ comp_info.address }}</p>
+    </header>
+    <main>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in comp_info.items %}
+          <tr>
+            <td>{{ item.name.capitalize }}</td>
+            <td>{{ item.price }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+
+    <script>
+      const reportDate = document.getElementById("date");
+      reportDate.innerText = new Date().toLocaleDateString();
+    </script>
+  </body>
+</html>
